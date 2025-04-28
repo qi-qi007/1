@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人简历</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 20px;
+        }
+
+      .resume-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+      .section {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* 添加边界 */
+        }
+
+      .section-title {
+            background-color: lightgray;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            flex-basis: 100%; /* 标题独占一行 */
+        }
+
+      .info-group {
+            display: flex;
+            flex-basis: 100%;
+            border-bottom: 1px solid #ccc; /* 组内添加底部边界 */
+        }
+
+      .info-item {
+            display: flex;
+            flex-basis: calc(100% / 3); 
+            align-items: center;
+            justify-content: space-between; 
+            border-right: 1px solid #ccc;
+            padding: 0 10px; 
+        }
+
+      .info-item:last-child {
+            border-right: none; /* 最后一项去掉右边边界 */
+        }
+
+      .section-content {
+            flex-basis: 100%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+      .photo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        img {
+            transition: transform 0.3s ease;
+            width: 100px;
+            height: 100px;
+            margin: 0 5px;
+        }
+
+        img:hover {
+            transform: translate(5px, -5px) rotate(10deg) scale(1.2);
+        }
+
+        input[type="text"] {
+            font-size: 18px;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        select {
+            font-size: 18px;
+            padding: 10px 20px;
+            width: 100%; 
+            min-width: 120px; 
+            box-sizing: border-box;
+        }
+
+        /* 针对标题旁小图片的样式设置 */
+      .section-title img {
+            width: 16px; /* 适当缩小宽度 */
+            height: 16px; /* 适当缩小高度 */
+            vertical-align: middle; /* 垂直居中对齐 */
+        }
+
+        /* 定义图片从左到右移动的动画 */
+        @keyframes slideRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* 定义图片从右到左移动的动画 */
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* 图片容器初始样式，先不设置动画 */
+     .image-container {
+            display: flex;
+            will-change: transform; /* 优化动画性能 */
+        }
+
+        /* 鼠标悬浮图片容器时的动画样式 */
+     .image-container:hover {
+            animation: slideRight 5s linear infinite alternate; 
+        }
+
+        /* 新增 textarea 样式 */
+     .section-content textarea {
+            width: 100%;
+            box-sizing: border-box;
+            resize: none; /* 禁止用户调整大小 */
+            border: none; /* 去除边框 */
+            background-color: transparent; /* 背景透明 */
+            font-family: Arial, sans-serif; /* 使用和页面一致的字体 */
+            font-size: 16px; /* 设置字体大小 */
+            height: auto;
+            min-height: 100px;
+            overflow: hidden;
+        }
+
+        /* 按钮样式 */
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.clear {
+            background-color: #f44336;
+            color: white;
+        }
+
+        button.submit {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-container">
+        <div class="section">
+            <div class="section-title">
+                个人简历
+            </div>
+        </div>
+        <div class="photo">
+            <img src="1.jpg" width="240" height="300">
+        </div>
+        <div class="info-group">
+            <div class="info-item">
+                <div class="section-title"><span>籍贯  </span><img src="1gif.gif" width="20" height="20" alt="籍贯图标"></div>
+                <div class="section-content">
+                    <input type="text" value="山东省德州市" />
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="section-title"><span>联系电话</span><img src="4.jpg" width="20" height="20" alt="联系电话图标"></div>
+                <div class="section-content">
+                    <input type="text" value="18863850810" />
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="section-title"><span>电子邮箱</span><img src="2.png" width="20" height="20" alt="电子邮箱图标"></div>
+                <div class="section-content">
+                    <input type="text" value="2279542593@qq.com" />
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="info-group">
+                <div class="info-item">
+                    <div class="section-title"><span>学历  </span><img src="5.jpg" width="20" height="20" alt="学历图标"></div>
+                    <div class="section-content">
+                        <select id="educationSelect">
+                            <option>研究生</option>
+                            <option>本科</option>
+                            <option>高中</option>
+                            <option>初中</option>
+                            <option>小学</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="section-title"><span>健康情况</span><img src="6.jpg" width="20" height="20" alt="健康情况图标"></div>
+                    <div class="section-content">
+                        <select id="healthSelect">
+                            <option>健康</option>
+                            <option>良好</option>
+                            <option>差</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="section-title"><span>婚姻状况</span><img src="7.jpg" width="20" height="20" alt="婚姻状况图标"></div>
+                    <div class="section-content">
+                        <select id="marriageSelect">
+                            <option>未婚</option>
+                            <option>已婚</option>
+                            <option>离异</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="info-group">
+                <div class="info-item">
+                    <div class="section-title"> <span>求职意向</span><img src="8.jpg" width="20" height="20" alt="求职意向图标"></div>
+                    <div class="section-content">
+                        <select id="jobIntentionFrontSelect">
+                            <optgroup label="前端开发">
+                                <option>Web前端（HTML5/CSS3/JavaScript）</option>
+                                <option>小程序开发（微信小程序/React Native）</option>
+                                <option>U3D/COCOS游戏前端</option>
+                                <option>前端工程师、交互开发工程师</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="section-title"> <span>专业</span><img src="9.jpg" width="20" height="20" alt="专业图标"></div>
+                    <div class="section-content">
+                        <select id="majorSelect">
+                            <option>软件工程</option>
+                            <option>通信工程</option>
+                            <option>计算机</option>
+                            <option>人工智能</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="section-title"><span>毕业院校</span><img src="1gif.gif" width="20" height="20" alt="毕业院校图标"></div>
+                    <div class="section-content">
+                        <select id="schoolSelect">
+                            <option>鲁东大学</option>
+                            <option>烟台大学</option>
+                            <option>山东工商学院</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">技能证书</div>
+            <div class="section-content">
+                <div class="image-container">
+                    <img src="3.jpg" alt="图片描述" width="100" height="100">
+                    <img src="ta.webp" width="100" height="100" />
+                    <img src="ni.webp" width="100" height="100" />
+                    <img src="0.png" width="100" height="100" />
+                    <img src="ti.png" width="100" height="100" />
+                    <img src="liu.webp" width="100" height="100" />
+                </div>
+                <textarea>
+                    软件工程：需求分析（UML建模）、软件架构设计（微服务/分布式）、持续集成/持续部署（CI/CD）。项目管理：敏捷开发（Scrum/Kanban）、成本控制、风险管控。
+                </textarea>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">个人特长与爱好</div>
+            <div class="section-content">
+                <textarea>
+                    技术宅文化
+                    代码实验：周末常在家写小程序或优化开源项目，如尝试用Python实现机器学习算法。
+                    Linux系统折腾：定制个人开发环境，配置复杂的脚本自动化任务。
+                    技术社区活跃：在GitHub提交PR、参与Stack Overflow答题，部分资深者拥有过万声望值。
+                </textarea>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">项目经历</div>
+            <div class="section-content">
+                <textarea>
+                    一、项目典型阶段
+需求分析阶段与客户/产品经理深度沟通，明确项目目标、用户故事和功能性需求
+输出需求文档（100）、用例图、流程图等
+挑战：需求模糊或频繁变更
+应对：采用敏捷开发方法，建立需求优先级排序机制
+系统设计阶段
+创建系统架构图、数据库设计、API接口规范
+选择技术栈（如Spring Boot + MySQL + React）
+制定开发计划和排期表
+挑战：技术选型风险
+应对：进行技术预研和原型验证
+编码实现阶段
+按功能模块划分任务，进行代码开发
+遵循编码规范，开展代码审查（Code Review）
+使用Git进行版本控制，建立分支管理策略
+挑战：代码质量不稳定
+应对：实施单元测试覆盖率要求，建立CI/CD流水线
+测试验证阶段
+执行单元测试、集成测试、系统测试
+开展用户验收测试（UAT）
+使用自动化测试工具（如Selenium、JUnit）
+建立缺陷跟踪系统（如Jira）
+挑战：测试覆盖率不足
+应对：制定分层测试策略，引入探索性测试
+部署上线阶段
+准备生产环境，进行部署演练
+实施蓝绿部署或金丝雀发布
+监控系统运行状态（如Prometheus + Grafana）
+挑战：部署风险
+应对：采用容器化技术（Docker），建立回滚机制
+运维维护阶段
+收集用户反馈，持续优化系统
+进行版本迭代和功能升级
+建立灾备方案和应急响应机制
+                </textarea>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">自我评价</div>
+            <div class="section-content">
+                <textarea>
+                    作为一名软件工程专业学生，我系统掌握了Java/Python开发技能，熟悉Spring Boot、Django等主流框架，具备数据库设计与优化经验。参与过电商系统开发、社交应用构建等多个实战项目，能完整经历需求分析到部署上线的全流程，在团队中承担核心开发角色。擅长定位复杂系统问题，通过Redis缓存、消息队列等技术优化高并发场景性能。具备良好的代码规范意识和文档编写能力，注重团队协作与沟通。持续学习云计算、人工智能等前沿技术，未来计划深耕分布式系统领域，向技术专家方向发展，致力于用代码创造高效且可靠的产品。
+                </textarea>
+            </div>
+        </div>
+
+        <!-- 添加按钮区域 -->
+        <div class="button-container" style="display: flex; justify-content: center;">
+            <button class="clear" onclick="clearSelectedOptions()">Clear</button>
+            <button class="submit">Submit</button>
+        </div>
+    </div>
+    <script>
+        function clearSelectedOptions() {
+            // 获取所有select元素
+            var selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                // 将每个select的选中项设置为第一个选项（即清空选择）
+                select.selectedIndex = 0;
+            });
+        }
+    </script>
+</body>
+
+</html>
